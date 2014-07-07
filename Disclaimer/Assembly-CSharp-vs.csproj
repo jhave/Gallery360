@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{1EE41E81-78E8-8846-52A4-57C38603FF59}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_4_5_1;UNITY_4_5;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_WIN;UNITY_PRO_LICENSE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\MiddleVR\Scripts\Cluster\VRApplySharedTransform.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Cluster\VRClusterObject.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Cluster\VRShareTransform.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRActor.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRAttachToNode.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRElasticRepresentation.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRInteractionNavigationElastic.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRInteractionNavigationGrabWorld.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRInteractionNavigationWandJoystick.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Interactions\VRNavigationCollision.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Internal\VRCameraCB.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Internal\VRManagerPostFrame.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Internal\VRManagerScript.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Internal\VRRiftCamera.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Internal\VRWandInteraction.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Internal\VRWandNavigation.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRActionSample.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRCalibrateTracker.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRCalibrateTrackerYaw.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRFollowNode.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRInteractionTest.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRReceiveBool.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRReceiveEvent.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRReceiveFloat.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRShareBool.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRShareEvent.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRShareFloat.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRVirtualTrackerMapping.cs" />
+     <Compile Include="Assets\MiddleVR\Scripts\Samples\VRVirtualTrackerSimulation.cs" />
+     <Compile Include="Assets\Scripts\CameraFPS.cs" />
+     <Compile Include="Assets\Scripts\Game.cs" />
+     <Compile Include="Assets\Scripts\MovementMotor.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PlayerMoveController.cs" />
+     <Compile Include="Assets\Scripts\RotateWithWand.cs" />
+     <Compile Include="Assets\Scripts\UI_GamePadMapping.cs" />
+     <None Include="Assets\MiddleVR\Assets\Materials\OVRLensCorrection.shader" />
+ <Reference Include="MiddleVR_dotNet">
+ <HintPath>C:/Users/Public/Documents/Unity Projects/Disclaimer/Assets/MiddleVR/MiddleVR_dotNet.dll</HintPath>
+ </Reference>
+ <Reference Include="MiddleVR_Unity3D">
+ <HintPath>C:/Users/Public/Documents/Unity Projects/Disclaimer/Assets/MiddleVR/MiddleVR_Unity3D.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
