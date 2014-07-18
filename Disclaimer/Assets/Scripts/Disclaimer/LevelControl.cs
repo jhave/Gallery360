@@ -13,6 +13,7 @@ public class LevelControl : MonoBehaviour {
 	
 	public UI_GamePadMapping joystick;
 	public Light point01;
+	private bool initOn = false;
 	
 	/* Level:
 	 * 1 = Disclaimer
@@ -28,13 +29,18 @@ public class LevelControl : MonoBehaviour {
 		//StartCoroutine(Fade.use.Alpha(point01, 0.0f, 4.0f, 3.0f));
 
 		//Fade Light
-		point01.intensity = Mathf.Lerp(4.05f, 0f, 2.0f * Time.deltaTime);
+		//point01.intensity = Mathf.Lerp(4.05f, 0f, 2.0f * Time.deltaTime);
 		//still have bug, put the above in update?
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		levelController ();
+		if (!initOn) 
+			if (point01.intensity < 4) {
+				point01.intensity += 0.05f;
+				initOn = false;
+			}
 	}
 	
 	void levelController() {

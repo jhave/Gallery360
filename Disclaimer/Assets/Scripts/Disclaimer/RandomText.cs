@@ -149,15 +149,19 @@ public class RandomText : MonoBehaviour {
 
 	void Update() {
 		//auto random
-		if (isRandom)
-			timer_randomize ();
-
+		if (isRandom) {
+			StartCoroutine(timer_randomize ());
+		}
 	}
-	void timer_randomize() {
+
+	IEnumerator timer_randomize() {
 		timer -= Time.deltaTime;
 		if (timer <= 0) {
-			for (int i=0; i<10;i++) {
+			for (int i=0; i<5;i++) {
 				random ();
+				//Debug.Log("Before Waiting 2 seconds");
+				yield return new WaitForSeconds(0.05f);
+				//Debug.Log("After Waiting 2 Seconds");
 			}
 			timer = randomTime;
 		}
