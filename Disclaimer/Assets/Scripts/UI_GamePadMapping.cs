@@ -17,8 +17,8 @@ public class UI_GamePadMapping : MonoBehaviour {
 	public float Axis7Value = 0;
 	public bool ButtonA_Pressed = false;
 	public bool ButtonB_Pressed = false;
-	public static bool ButtonX_Pressed = false;
-	public static bool ButtonY_Pressed = false;
+	public bool ButtonX_Pressed = false;
+	public bool ButtonY_Pressed = false;
 	public bool Button4_Pressed = false;
 	public bool Button5_Pressed = false;
 	public bool Button6_Pressed = false;
@@ -28,8 +28,8 @@ public class UI_GamePadMapping : MonoBehaviour {
 
 	public bool ButtonA_ToggleRelease = false;
 	public bool ButtonB_ToggleRelease = false;
-	public static bool ButtonX_ToggleRelease = false;
-	public static bool ButtonY_ToggleRelease = false;
+	public bool ButtonX_ToggleRelease = false;
+	public bool ButtonY_ToggleRelease = false;
 	public bool Button4_ToggleRelease = false;
 	public bool Button5_ToggleRelease = false;
 	public bool Button6_ToggleRelease = false;
@@ -51,12 +51,12 @@ public class UI_GamePadMapping : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		WandRay = GameObject.Find("WandRay");
-		WandCube = GameObject.Find("WandCube");
-		if (WandRay.renderer!=null) {
-			WandRay.renderer.enabled=false;
-			WandCube.renderer.enabled=false;
-		}
+//		WandRay = GameObject.Find("WandRay");
+//		WandCube = GameObject.Find("WandCube");
+//		if (WandRay.renderer!=null) {
+//			WandRay.renderer.enabled=false;
+//			WandCube.renderer.enabled=false;
+//		}
 	}
 	
 	// Update is called once per frame
@@ -97,24 +97,24 @@ public class UI_GamePadMapping : MonoBehaviour {
 			Button9_ToggleRelease = joy.IsButtonToggled(9);	
 			
 			//********** Toggling WandRay Visiblity BEGIN ********//		
-			if (Button5_ToggleRelease) {
-				WandRay = GameObject.Find("WandRay");
-				WandCube = GameObject.Find("WandCube");
-				if (WandRay.renderer!=null) {
-					WandRay.renderer.enabled=!WandRay.renderer.enabled;
-					WandCube.renderer.enabled=!WandCube.renderer.enabled;	
-				}
-			}			
+//			if (Button5_ToggleRelease) {
+//				WandRay = GameObject.Find("WandRay");
+//				WandCube = GameObject.Find("WandCube");
+//				if (WandRay.renderer!=null) {
+//					WandRay.renderer.enabled=!WandRay.renderer.enabled;
+//					WandCube.renderer.enabled=!WandCube.renderer.enabled;
+//				}
+//			}			
 			//********** Toggling WandRay Visiblity END ********//
 		}		
 		
-		if (Weapon == null) {
-			Weapon = GameObject.Find("main_weapon001");
-		}
-		else {
-//			Weapon.transform.localPosition = 
-//				new Vector3(WeaponDisplacement,Weapon.transform.localPosition.y, Weapon.transform.localPosition.z);
-		}
+//		if (Weapon == null) {
+//			Weapon = GameObject.Find("main_weapon001");
+//		}
+//		else {
+////			Weapon.transform.localPosition = 
+////				new Vector3(WeaponDisplacement,Weapon.transform.localPosition.y, Weapon.transform.localPosition.z);
+//		}
 		
 		
 		

@@ -75,19 +75,23 @@
      <Compile Include="Assets\MiddleVR\Scripts\Samples\VRShareFloat.cs" />
      <Compile Include="Assets\MiddleVR\Scripts\Samples\VRVirtualTrackerMapping.cs" />
      <Compile Include="Assets\MiddleVR\Scripts\Samples\VRVirtualTrackerSimulation.cs" />
+     <Compile Include="Assets\Scripts\CameraAttachedToPlayer.cs" />
      <Compile Include="Assets\Scripts\CameraFPS.cs" />
-     <Compile Include="Assets\Scripts\Game.cs" />
-     <Compile Include="Assets\Scripts\MovementMotor.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\PlayerMoveController.cs" />
-     <Compile Include="Assets\Scripts\RotateWithWand.cs" />
+     <Compile Include="Assets\Scripts\Disclaimer\LevelControl.cs" />
+     <Compile Include="Assets\Scripts\Disclaimer\RandomText.cs" />
+     <Compile Include="Assets\Scripts\Movement\FreeMovementMotor.cs" />
+     <Compile Include="Assets\Scripts\Movement\MovementMotor.cs" />
+     <Compile Include="Assets\Scripts\Movement\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Movement\PlayerMoveController.cs" />
+     <Compile Include="Assets\Scripts\Movement\RotateWithWand.cs" />
+     <Compile Include="Assets\Scripts\Scene\AngryWordsMain.cs" />
      <Compile Include="Assets\Scripts\UI_GamePadMapping.cs" />
      <None Include="Assets\MiddleVR\Assets\Materials\OVRLensCorrection.shader" />
  <Reference Include="MiddleVR_dotNet">
- <HintPath>C:/Users/Public/Documents/Unity Projects/Disclaimer/Assets/MiddleVR/MiddleVR_dotNet.dll</HintPath>
+ <HintPath>C:/Users/Public/Documents/Unity Projects/github/Gallery360/Disclaimer/Assets/MiddleVR/MiddleVR_dotNet.dll</HintPath>
  </Reference>
  <Reference Include="MiddleVR_Unity3D">
- <HintPath>C:/Users/Public/Documents/Unity Projects/Disclaimer/Assets/MiddleVR/MiddleVR_Unity3D.dll</HintPath>
+ <HintPath>C:/Users/Public/Documents/Unity Projects/github/Gallery360/Disclaimer/Assets/MiddleVR/MiddleVR_Unity3D.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

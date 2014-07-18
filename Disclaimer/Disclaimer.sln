@@ -5,6 +5,8 @@ Project("{AD0A802E-C813-4E92-10A5-625933DB50A7}") = "Disclaimer", "Assembly-CSha
 EndProject
 Project("{AD0A802E-C813-4E92-10A5-625933DB50A7}") = "Disclaimer", "Assembly-CSharp-Editor.csproj", "{65B7EF3B-72A5-4868-3DD1-3096E6ACC257}"
 EndProject
+Project("{AD0A802E-C813-4E92-10A5-625933DB50A7}") = "Disclaimer", "Assembly-UnityScript-firstpass.unityproj", "{E973541A-C3AD-67E2-67B6-1950EF4E78B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{65B7EF3B-72A5-4868-3DD1-3096E6ACC257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65B7EF3B-72A5-4868-3DD1-3096E6ACC257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65B7EF3B-72A5-4868-3DD1-3096E6ACC257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E973541A-C3AD-67E2-67B6-1950EF4E78B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E973541A-C3AD-67E2-67B6-1950EF4E78B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E973541A-C3AD-67E2-67B6-1950EF4E78B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E973541A-C3AD-67E2-67B6-1950EF4E78B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
