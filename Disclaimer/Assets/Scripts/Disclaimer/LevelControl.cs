@@ -23,7 +23,7 @@ public class LevelControl : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		level = 1;
+		level = 1; 
 
 		//Fade Object or Text ONLY
 		//StartCoroutine(Fade.use.Alpha(point01, 0.0f, 4.0f, 3.0f));
