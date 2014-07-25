@@ -48,6 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\VRCustomEditor.cs" />
      <None Include="Assets\MiddleVR\Assets\Materials\OVRLensCorrection.shader" />
+ <Reference Include="Assembly-UnityScript-firstpass">
+ <HintPath>C:/Users/Public/Documents/Unity Projects/github/Gallery360/Disclaimer/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
  <Reference Include="MiddleVR_dotNet">
  <HintPath>C:/Users/Public/Documents/Unity Projects/github/Gallery360/Disclaimer/Assets/MiddleVR/MiddleVR_dotNet.dll</HintPath>
  </Reference>

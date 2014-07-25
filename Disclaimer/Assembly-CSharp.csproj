@@ -79,8 +79,11 @@
      <Compile Include="Assets\Scripts\CameraFPS.cs" />
      <Compile Include="Assets\Scripts\Disclaimer\LevelControl.cs" />
      <Compile Include="Assets\Scripts\Disclaimer\RandomText.cs" />
+     <Compile Include="Assets\Scripts\DynamicText360\CylinderTextLoop.cs" />
+     <Compile Include="Assets\Scripts\DynamicText360\DynamicLoop.cs" />
      <Compile Include="Assets\Scripts\Movement\FreeMovementMotor.cs" />
      <Compile Include="Assets\Scripts\Movement\MovementMotor.cs" />
+     <Compile Include="Assets\Scripts\Movement\PlayerCollider.cs" />
      <Compile Include="Assets\Scripts\Movement\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Movement\PlayerMoveController.cs" />
      <Compile Include="Assets\Scripts\Movement\RotateWithWand.cs" />
@@ -93,6 +96,10 @@
  <Reference Include="MiddleVR_Unity3D">
  <HintPath>C:/Users/Public/Documents/Unity Projects/github/Gallery360/Disclaimer/Assets/MiddleVR/MiddleVR_Unity3D.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{E973541A-C3AD-67E2-67B6-1950EF4E78B8}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

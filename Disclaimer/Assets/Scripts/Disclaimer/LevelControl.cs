@@ -12,8 +12,11 @@ public class LevelControl : MonoBehaviour {
 	public GameObject player_view;
 	
 	public UI_GamePadMapping joystick;
+	public PlayerMoveController playerMoveController;
+	public Light point00;
 	public Light point01;
-	private bool initOn = false;
+
+	private bool initOn;
 	
 	/* Level:
 	 * 1 = Disclaimer
@@ -23,24 +26,27 @@ public class LevelControl : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		level = 1; 
-
+		setLevel (1);
 		//Fade Object or Text ONLY
 		//StartCoroutine(Fade.use.Alpha(point01, 0.0f, 4.0f, 3.0f));
-
-		//Fade Light
-		//point01.intensity = Mathf.Lerp(4.05f, 0f, 2.0f * Time.deltaTime);
-		//still have bug, put the above in update?
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		levelController ();
-		if (!initOn) 
+		if (!initOn) {
 			if (point01.intensity < 4) {
 				point01.intensity += 0.05f;
+			}
+
+			if (point00.intensity < 4) {
+				point00.intensity += 0.05f;
+			}
+
+			if (point00.intensity >= 4 && point01.intensity >= 4) {
 				initOn = false;
 			}
+		}
 	}
 	
 	void levelController() {
@@ -57,19 +63,33 @@ public class LevelControl : MonoBehaviour {
 			}
 			
 			//Middle Button
+			//remove plane (remove platform)
 			if (Input.GetMouseButtonDown (2) || joystick.ButtonA_Pressed) {
 				//Debug.Log ("Pressed right click.");
 				cPlane.SetActive(false);
+				setLevel(2);
 				//vrmgrscript.RootNode = player_root;
 				//vrmgrscript.TemplateCamera = player_view;
 			}
 			break;
+		case 2:
+
+
+			break;
 		}
 	}
 	
-	void levelSetup(int lv) {
+	public void setLevel(int lv) {
+		this.level = lv;
 		switch (lv) {
-		case 1:
+		case 1: //Disclaimer
+			initOn = false;
+			playerMoveController.enabled = false;
+			break;
+		case 2: //Cone
+			break;
+		case 3: //Angry Words
+			playerMoveController.enabled = true;
 			break;
 		}
 	}

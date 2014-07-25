@@ -59,6 +59,8 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{E973541A-C3AD-67E2-67B6-1950EF4E78B8}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{1EE41E81-78E8-8846-52A4-57C38603FF59}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
