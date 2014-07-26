@@ -86,8 +86,11 @@ public class RandomText : MonoBehaviour {
 	private string[] ar_rates_cn;
 	private string[] ar_by_phrases_cn;
 
+	private System.Random rdnNo;
+
 	// Use this for initialization
 	void Start () {
+		rdnNo = new System.Random (2);
 
 //		timer = new Timer (randomTime * 1000);
 //		timer.Elapsed += new ElapsedEventHandler (timer_randomize);
@@ -176,7 +179,6 @@ public class RandomText : MonoBehaviour {
 		int rdn;
 		float fx, fy, fz, rx, ry, rz;
 
-		System.Random rdnNo = new System.Random ();
 		rdn = rdnNo.Next (0, ar_follow_phrases.Count);
 
 		//*** Remove the item from all array ***
