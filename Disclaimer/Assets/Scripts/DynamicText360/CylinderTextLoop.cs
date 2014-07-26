@@ -2,13 +2,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
+using System.Threading;
 
 public class CylinderTextLoop : MonoBehaviour {
 
 	public float pushTime;
-	private float timer;
+	public int seed;
+//	private float timer;
+	private System.Timers.Timer timer;
 
 	public TextMesh text_360;
+	private string phrasesToPush;
+
 	//public Camera camera_360;
 
 	public bool isStr1;
@@ -16,6 +22,8 @@ public class CylinderTextLoop : MonoBehaviour {
 	public bool isStr3;
 	public bool isStr4;
 	public bool isStr5;
+
+	private System.Random rdnNo;
 
 	private string phrases360;
 	private string phrases360_1;
@@ -26,12 +34,16 @@ public class CylinderTextLoop : MonoBehaviour {
 	private string phrases360_5;
 
 	private DynamicLoop loop360;
+	private string queue;
 
 	private List<string> ar_phrases360;
 
 	// Use this for initialization
 	void Start () {
-		timer = pushTime;
+		rdnNo = new System.Random (seed);
+
+		//timer = pushTime;
+		phrasesToPush = "";
 
 		phrases360_1 = "embedded,gonna,boaaaaaard,Ghostbusters,badass,chris,hydroponic,teabag,til,brief,hey,multi,yo,motocross,bro,Ohhhh,Yo,Kanye,either,Uh,Kobe,Bridgett,Henny,Cali,many,Quence,aight,something,else,wanna,every,glocks,uh,Skillz,Everybody,would,Janet,Jessica,Bryant,Thats,cryin,gotta,wanna,shorty,tomorrow,hoopty,nightcap,Gucci,Fendi,Burberry,aint,Prada,parle,yo,reminisce,tash,chofuer,deaded,BCBG,Vandross,tainn,grainn,framee,Rangee,Coc,ainee,Herio,anee,Thats,namee,painn,samee,brainn,ya,motherfuckin,chainn,mangg,playinn,understan,sprayinn,thats,lamee,mang,hustla,dont,playa,nuttin,changee,blamee,gangg,thang,bangg,fitlthy,benz,chriz,omes,useta,Useta,gots,treal,payless,motherfucka,gunna,SHAQ,ol,Yo,Ya,Youza,poptart,eatcha,Suge,disrespectfu,cuz,niggaz,gonna,lil,Tah,Yonkers,Cadd,outta,York,extored,BLOWW,Ladies,huuhhhh,gon,Vivica,Oprah,sidearm,feet,enemies,Tony,Yayo,yaself,cowrads,intergangstress,Latifah,streetsweeper,prada,chuckus,suckas,lotta,aero,plad,bulbary,smokin,gucci,Craig,pathmark,college,Shakur,dispatcha,coupe,supersized,nowhere,muthafuckin,somethin,aight,yous,cho,either,tigger,curfew,HUH,UH,Emilio,Bubba,bustas,whats,upsidedown,stylin,brocclis,Alka,btich,Carolina,Harlod,Bacardi,Marcus,Darvy,cardiac,fuckas,Whats,gangsta,Anytime,afternoon,freestyles,Ja,Benz,huh,uh,Makaveli,Eyez,bwahh,mayn,thangs,sleet,Glocks,UTP,baller,grimey,yeah,shall,Shorty,yacht,Blaque,Gimme,fam,cossimy,Guiliani,ridin,OT,personna,wouldnt,chedda,BARETTA,didnt,betcha,cha,already,somethings,wasnt,shoulda,CHANEL,bummy,Gotta,teenie,boopers,motherfuckering,dealing,Biggie,dyin,Toyota,glock,phat,gym,Mami,minage,trois,Whattup,ou,chickenhead,CeCe,BMCC,Tre,Hey,nah,Shanel,Jigga,Hondas,Penetentiaries,homie,Niggaz,Tommy,Matola,Ruger,Eminem,moma,rasied,BBBBLLLLATTTTT,bizzack,burbs,math,babies,speedbags,stiffin,juky,ballin,livin,Remintons,huey,georgous,yall,anit,givin,saditty,Diddy,sho,pre,Gabbana,woulda,diffrent,Mercedes,Cali,bud,thuggin,motherfuckas,Loc,Ima,puppy,nigga,Preme,muthafuckas,GSX,Gerald,suprised,chapter,Remmy,Joe,Rightous,Chaz,wips,Tata,Bo,Cooley,rollie,Royces,Louie,VaTonne,Montanna,Benice,Alpo,Jamaican,Rodney,sippin,playas,Hiners,Clanvis,Reuger,Homie,tryina,Dom,Aww,Damm,Teck,Mossburg,glocks,Kojak,Tecks,Cuz,millionaire,Lil,fist,Dre,concussion,heh,Tanqueray,Everytime,indo,sips,Henny,fa,Finna,David,O,Brooklyn,Aiyyo,Kim,Whitney,Brian,anytime,Keith,Harlem,Cardan,ODB,Kurupt,thru,Bentley,Mariah,skeamin,Steve,klepto,Stevie,mink,Grammies,Jada,Miami,gimme,DMX,Treach,TQ,Rae,RZA,MTV,Cannibus,Blackstreet,Robyn,im,Busta,Flipmode,enuff,Madd,aggy,pleany,afar,alot,fucker,DKNY,BKNY,shit,jake,sperge,celebs,Camon,everbody,Somedays,recconect,probation,mami,headlock,extasy,Extasy,Findi,Infamil,Moter,princables,men,Perion,Cristy,Irv,mothafucka,Charli,Baltimore,mothafuckas,Ashanti,Gotti,whut,sip,Southside,Uh,bub,Xzibit,Cutt,shawty,shorties,Vicky,panties,Cris,Ballers,guzzle,towel,henny,Sha,homies,coatie,Tryna,Fidna,hotta,AAAAAH,floss,tryna,Wanna,yayo,harda,hoodrats,cockpit,choppas,tellie,thugin,raff,Yorker,bubblin,pokin,Kobe,Obie,Iovine,motherfucking,mystique,cockamamey,coo,numero,Porsche,rewinding,Lauryn,Phil,Donahue,piddy,Nore,dial,bulimic,Ay,dawg,Paulie,Malcolm,Psych,kite,blessins,writin,Isuzu,killas,Michael,wifey,icey,Gabana,Ramada,Nik,AMGs,Hollywoood,Perignon,Imma,dey,Matta,Blvd,Mondreal,earring,crip,bama,rollout,carnids,bro,Thursday,hooptay,Vipe,pint,sleak,lungs,Shaquille,hahaha,Wes,Cadillac,goodnight,Delores,Motherfuck,samurai,sensai,utsl,ay,itchb,Ucks,ikcd,igp,atinl,uckf,rott,Swifty,Chuckie,sheezy,Lorraina,Bobbet,Bel,Biv,Devoe,Garth,gunsmoke,gentlemen,shinin,illin,comin,YA,coporaaaaaation,hesitaaaaaation,patieeeeeents,medicaaaaaaation,maaaaaason,eraaaaaase,chaaaaaaase,villan,confuuuuuused,killa,crunked,willie,supermodel,murda,mic,tthings,Memphis,Shytown,Bentleys,tex,cordless,carlot,saxophones,benzes,Yall,Brucie,sheriff,Maebach,tapdance,servin,mindframe,popo,fofo,chiba,Adidas,ginen,ugh,godrule,Warrent,dolo,volvo,kuku,llelo,muthafucking,tech,hemee,remixes,Lex,Scooby,Doo,blinged,freestyle,movin,racin,yesterday,bandaids,Lloyd,Pedro,feinin,Christina,Brittney,Aint,Nigaas,janitor,ruger,shadder,McCoy,fiens,bicepts,tricepts,arangements,gorrilla,damm,convo,NewYork,gemstar,infact,jooked,ulation,trackmeet,airmax,lives,Pataki,atleast,sometimes,champaigne,duke,Stoute,Chanel,thugged,bedpost,polying,lowkey,illing,whatchu,Langston,Hughes,Pre,memoirs,skits,ren,Roog,oozie,woozie,convertable,ghetto,dem,whoopins,Bronx,Queensbridge,pantyhose,anyway,doo,remover,shalt,crome,everytime,Kool,ballers,chedder,NYPD,def,demple,fanbase,coulda,OGs,eligable,yoooooo,blowwwww,knowwww,hooos,tyme,gansta,wanksta,tha,amoretta,betta,merk,inf,jus,wheelies,Kawasaki,chu,cuzin,rewind,hustlin,highskewl,bezzle,crutches,chuckas,stapped,thoughties,japped,bodies,Curtis,Nina,Allah,afta,QB,loc,Bravehearts,Josey,spaz,Whoo,GON,Nah,rabs,Elliot,babymama,ah,vul,wat,clos,nev,bett,weath,donk,duh,pum,Cinnabon,ooooh,anought,Isley,Rolleys,Wouldnt,Kosami,anotha,disapper,Mariella,Peruvian,eevrytime,fuck,tele,Pelle,perili,Lorenzo,Benzo,wil,faultline,legiments,decadance,teeth,fautline,karma,Dracula,midnight,orangey,energies,someday,fixable,alochol,DIY,river,bathoom,Vincent,rooftop,weekend,sundials,wintertime,consearned,egual,stories,youre,women,else,unlock,molasses,Brazos,plowmen,uptighten,Angelina,Gonna,Sadie,Napper,dow,Paine,Harvard,godalmighty,others,crutch,unto,ought,yuh,Dakota,Bessie,buldozer,berenda,hacienda,Tularosa,Rio,San,businessmen,Garrett,Pecos,signorita,Paso,island,Cronkite,Orleans,prayet,gunfighter,Brownsville,panhandle,Amarillo,backyard,Christi,Henry,fingertips,Shall,Canadee,Canada,satins,flies,buttermilk,bumpety,pinstripe,Reggie,underdog,unpawned,mistitled,hearted,napalm,Burger,Royce,bound,Pasquale,repine,Jake,ante,Ragshag,bummer,Delia,Men,commissioner,Cinderella,fortunetelling,Abel,Notre,spoonfeeding,Casanova,Outa,Neptune,Ezra,mermaids,carries,lou,Phillip,bordertowns,blackheart,Jackie,mudcake,thee,beanery,pumphouse,outa,oh,levee,courthouse,westward,hop,cra,zy,rooftoops,teacheth,rainbows,shapeth,turneth,rivers,feudal,Juliet,Danny,Erroll,Flynn,universities,Albert,Frankie,Alice,rootie,daugther,enginer,brakeman,juney,bumbley,junkyard,lamppost,Unto,Taj,Mahal,ahold,socialite,working,councilman,homward,orchestra,Nancy,Staten,Hudson,smog,Cal,stardust,Bertha,overboard,Bluebelles,Aberdeen,buckeyed,Neil,chariots,anywhere,twang,Abe,Howard,hmm,bleachers,ashore,carpenter,Carter,middleweight,Alfred,Bello,middleweights,ghettos,Arthur,motel,wanta,sonofabitch,trout,piney,ye,amongst,immigrant,shatter,woodshed,Brigitte,Ernest,humdinger,ferris,Yul,granddaughter,alla,Richard,Cassius,Barry,Goldwater,bubblegum,sorority,Omaha,rainman,Judy,Phaedra,backroads,Coulee,Jericho,Nicodemus,jes,orphan,fergit,England,Jim,gallows,rankers,Donohue,Jones,Larry,Joey,Wilhelm,Jacqueline,Carmela,brace,Chaynee,hurricane,Jokerman,Sodom,Preacherman,Annie,Katie,Kingsport,Menphis,yer,leaves,yesterdays,oughta,swimmy,closin,banjo,sill,dimlit,Remus,Claus,marshmallow,mache,Lenny,pappy,Lawd,juiced,jugglers,penknife,lo,Pittsburgh,Moby,Samantha,Cornersville,mourn,silhouettes,Fuhrer,Niagara,nomore,Ann,deathbed,barn,Rosie,geese,countryside,dew,Rita,Fidel,Bojangles,throughtout,tonks,bitO,tambourine,bootheels,lynch,odds,allies,unring,empress,priestess,ink,Babylon,Camille,Paree,milkman,meadowlark,Medgar,Evers,epitaph,Jesse,Oxford,Peggy,mainline,Othello,cherries,Freddy,tries,lemme,memories,Quinn,Conley,Willie,bautiful,Magdalena,Aztec,cantina,torero,tequila,Ruben,silhouette,Tyrus,leapfrog,Chelsea,Sphinx,Saro,Jane,chillun,McMillan,suspense,trainload,bogged,pyramid,Francisco";
 		phrases360_2 = "harpoon,keyhole,codeine,Brighton,boll,saxophone,sailers,Stan,Jefferson,wildfire,spies,croon,hey,Sonora,Lyons,bedside,senator,Ruthie,tonk,Aw,debutante,Maggie,Doz,manhole,Darktown,Gabriel,Timbukto,Yee,gol,Betty,Birchers,ups,dues,Montague,January,Whatcha,scorpion,Achilles,Pima,wene,Jima,speeched,Hayes,squadered,pocketful,numbles,shyness,Claudette,Buenos,William,Zanzinger,shrug,Hattie,ashtrays,gavel,Caine,ter,prophesize,oak,Carmen,woncha,Chester,Gandi,jitterbug,Frisco,Lou,Davey,Cecil,DeMille,Raney,Valerie,Vivian,wolves,fro,grindstones,dee,Dum,Dee,multi,babababababy,Hong,Kong,postal,Dupree,ringleaders,Louise,Johanna,Lisa,musta,Jeeze,rhapsody,shoreline,drownded,Ollie,wha,itwhen,fife,ton,Winterlude,Eliza,Vitus,Wichita,Yer,Wo,o,Africa,eth,Dideh,yoo,Dem,Thru,trodding,winepress,Trodding,cyard,Blackman,barnyard,Humpty,Dumpty,Jill,Muffet,Rasta,wo,mainland,Juan,somewhere,bunkheads,conman,yown,Jah,oo,endureth,leadeth,eah,satis,fy,sweepstake,Satis,deh,wah,Oo,bringeth,skism,Noah,Shem,Japhet,raindrops,hallelujah,Anyday,doggone,wid,Wotcha,Eh,crie,suru,kaya,Huh,booga,reggae,Cuka,beel,dreadlock,upfull,forklift,Upfull,Oba,obaserving,Georgie,riddim,Armagiddyon,ell,Iyaman,Binghi,irie,yah,Rastaman,guine,gog,mice,brr,fiyah,Dready,gwan,yaga,waisting,Dreadies,bunny,Brr,housetop,diggeth,Inite,oneself,Ye,naw,Je,Garvey,eh,rhapsodies,loveline,Daniel,Meshach,Abednego,yountry,Rockstone,rockstone,yot,yood,ere,Tru,deese,eartaches,eart,melodies,galang,ska,Ska,dibby,doop,looky,ey,su,cluk,everyman,hoo,disco,lawn,December,Leanardo,Amy,Michelangelo,Margie,Fransisco,satin,wannna,Wendsday,theres,museum,belive,Maryann,curfews,butterflies,clotheslines,Seperate,mariachi,Ensenada,Alvarado,funhouse,disquise,awefull,Im,taffy,colorblind,suede,Anne,Cherokee,elisabeth,hanginaround,familar,worries,choo,Barcelona,Monday,eliza,Margery,Atlantic,st,barrio,Dylan,trapezes,shatters,Pioneertown,shes,burried,electrical,frontier,num,oceanside,cliffside,Houston,Antone,wasn,grandson,Circa,Pancho,federales,Loma,Henderson,comet,switchman,truckstops,Amanda,precipice,grange,cowgirl,tidal,chapstick,matchstick,Los,Angeles,Chesapeake,summertime,Sullivan,BMW,Elsa,southland,Watergate,skies,Feet,Ah,Roy,Orbison,imperception,Wiseblood,babyboy,Ahh,lalala,starlight,OL,biker,strenght,afriad,thy,changd,Kurt,vu,Friday,Ohh,agian,deja,vuuuu,mystifies,pretention,throught,ll,ve,happended,inspite,laha,moonliight,remeber,dood,lalalalaayyy,Chernobyl,everythin,Maud,Inistree,cries,biggy,Frannie,mor,oooo,Beatles,Mombassa,bushland,Others,Touchshriek,shesores,Walloff,Domburg,sadmen,deliquent,Lucy,stake,Amlapura,Swedish,tomorrows,Valentine,um,videotape,beggarman,Psychodelicate,Benetton,nite,Facist,featherfall,footstone,Uncage,convinctions,breakfast,dine,againI,tricoteuses,papier,Tres,yeh,swasticas,sh,shhh,stiles,bramble,cambric,Austrian,folk,candyman,Everest,buttholes,paranoia,worl,Todd,sans,sableized,kitsch,yore,memo,itdo,sorta,Rudy,Jung,Astronette,Sylvian,prairie,Clara,unpure,peoploids,Coverting,skyscrapers,rewrapping,legwarmers,emerald,spacegun,Zi,Duang,Manhattoes,Icarus,Moondust,countdown,Andy,ame,ponytail,Shutu,walkie,rooftops,Hoochie,Koochie,Janine,aren,fraid,emblazed,Americard,Femme,fatales,Ibeza,Norfolk,Britannia,Tuesday,Saracens,Coeur,Leon,Savoy,Paddington,Doesn,doesn,chauffered,shouldn,rainbow,Venusians,pazanane,capeche,moonage,horsemen,Kyoto,Cyprus,update,criss,ash,skull,stiches,bloodlite,spitfire,Pablo,Picasso,Dorado,Lambeth,vicar,couldn,locket,wouldn,thng,Flo,logic,Bardo,ludes,landscape,Reet,cadillac,rockface,scythe,suciide,Chev,chappie,emotes,peacefuls,Klingon,grammy,Charlie,jealousies,soc,flagstone,Jessica,Ludlow,trenchcoat,hobnail,Eileen,Tessie,Sinn,Montains,Botella,overself,homeward,Oogie,overground,Abracadoo,gona,Robert,Zimmerman,superbrain,scrapbook,Rudi,Bevan,starman,poppa,stateside,Marilyn,inflatables,Kether,Malkuth,sunbirds,vendu,Shirley,blam,droogie,Beatle,faggy,Ziggy,Traumatics,resurrection,saccharin,Bewlay,Moonboys,fantasic,bombardier,browed,superfear,supergod,uni,mermen,KAHLIL,hangman,Freecloud,pebbles,Tim,Steven,sha,Babel,scumholes,sniper,maggot,branca,mulatto,gasworks,condo,supremicist,pigtails,washrooms,parquet,Braque,possibilities,ooo,honeymoon,Shakey,manholes,suffragy,overpopulate,infertible,infanticide,leecher,ouverture,townies,slinky,Sheeners,Barbie,Cadi,Chrysler,outtimed,Wierd,naz,rnan,downward,Unclose,starfire,mysteries,Goodnight,justtify,goddess,bubblegoose,PJs,Monique,nitty,hots,Jamaica,Everlast,Savannah,zodiac,Uzi,tidgy,poo,kidney,cajones,Susie,bicoastal,chastized,Oyl,windowsill,Darrel,cleary,cotacs,ryhmes,goona,legit,momo,phatness,electro,Grammy,Mase,extraordinare,Bayfare,Albee,savoir,faire,simp,Abdul,Baqi,hows,Vinnie,chino,Lordz,numba,delt,termoil,pigtail,rakahs,deen,alamin,Scott,hypertest,weeknight,Bilal,traight,renkores,encores,notiriety,resighting,rythm,cubanos,McDonalds,calley,Catgorize,tatics,thit,Devonshire,Fordham,boogie,Doogie,flava,Everclear,Timex,Landon,Ewing,Kato,Hines,Socrates,Plato,lemonade,DLC,dancin,romancin,warpath,auther,Papercuts,Percocet,jism,posse,Simon,rhymin,holster,apolog,Likwits,beachfront,Acapulco,Greg,Edgar,Allan,Poe,Brock,intice,chiks,saga,whiling,feelins,bonecrushin,LaRock,Tupac,brotha,greatful,forcast,sequal,mumbo,yoexcept,lLok,Lofy,Bry,stregth,Rula,Ku,bandwagon,caine,hyper,demanicle,caucassion,Donald,girlies,Natorious,Lama,kush,ditty,Wesson,sweaty,loogie,budders,nav,baddest,rearview,seude,kiddies,jeapordy,amigos,serge,penthouse,midnights,Ritz,Berkley,cities,Granada,Asbury,Leroy,Sir,Badder,Dorris,Barbara,singa,linga,ringa,jinga,springtime,Junes,Ferris,Beatrice,Fairfax,Albuquerque,Charmaine,Tho,maguilla,Peru,apulco,encore,Rollaflex,Whaddya,badder,bossa,nova,firelight,September,egg,Merrry,April,junkyards,cheesecake,Tierra,Placido,Adelaide,heck,Vitalis,Barbasol,AF,caf,dred,ypu,belfries,doth,merci,beaucoup,Holloween,daisy,weinie,steak,June,giggy,Linda,Portland,kindergarten,MacArthur,Macheath,Ella,Newman,Brecker,demijohn,forward,Finn,ister,wonderland,heartbreaker,whispeedr,unfelt,Wrigley,Venetian,ark,Talley,dast,ja,Shirtails,pennies,sax,rou,ther,polka,Maytime,Colinette,boughs,nightcaps,hight,Stephen,bon,wrassle,scow,doooby,Hontz,ing,Smil,hon,caballeros,XYZ,Martinique,Waikiki,Sigmund,Freud,skateboards,chickie,quota,Santos,percolator,outsell,Ipanema,grocer,newsstand,unrightable,sacroiliac,Biltmore,McKlosky,Nathan,Allentown,Wilbur,Hershey,wildwood,ole,Tina,lala,schoolgirl,mopie,ingie,pingie,dicado,femme,Sharon,Susan,Winchester,Jordan,countries,Mmm,forsooth,Shangri,sandman,yum,ive,beens,tounge,rubbermade,HEY,Clorox,sintar,demi,writen,spake,Buick,Mackane,missionaries,infatu,ation,Falun,brainwashed,armband,wreackage,coma,cig,Whoa,cruch,vasectomy,Wilcox,firefight,yaaa,yaa,luxery,gether,muthafucker,Michelle,mindfucked,tenement,nightrain,November,enslavery,fagets,Ragz,richez,visons,Melrose,Rhiad,taggy,Pilate,troubadors,WANNA,Suzy,painds,Iittle,Thanx,endevours,sincerety,lenghten,FEET,constituction,scenary,anythind,Michi,crabface,IOU,neutronic,retina,whereever,immortality,Ican,dotta,Neverland,tomorow,togetherness,qour,Roland,Grapow,Gorgar,Kai,Ihe,pardise,Sltting,punpkin,oId,Linus,Hallowren,maglc,metallians,dipair,lnside,Togelher,waitlng,Seens,waik,beleive,aflower,otherside,Tonght,Anithing,enought,midlle,stll,trought,makethings,thoughtof,abook,Ilied,smokey,Gemman,Iyrics,Kerrang,jugernaut,sacrafice,inherit,wisps,sais,thone,fulfull,exchangable,buiseness,burean,babbits,cuold,Whenn,Alamo,midninght,Cyber,scaped,diferent,srtike,desearve,perfum,carismatic,reflecions,Thy,storybook,Rearenge,thougths,Romeo,tic,lobster,bignosed,suntang,tooked,dreamgirl,intrigers,shatted,mistreaters,peculair,taugh,itps,neet,reide,brins,imperator,nightride,fom,inperator,rubbersex,Helloween,meltdown,Leif,fairground,firemen";
@@ -54,17 +66,29 @@ public class CylinderTextLoop : MonoBehaviour {
 		//Debug.Log (phrases360);
 		ar_phrases360 = new List<string>(phrases360.Split (','));
 
-		loop360 = new DynamicLoop (phrases360_1, text_360, true);
+		queue = getPhrases();
+		Debug.Log (queue);
+
+		text_360.text = phrasesToPush;
+		
+		timer = new System.Timers.Timer(pushTime);
+		timer.Elapsed += new ElapsedEventHandler(pushWords);
+		timer.Enabled = true;
+
+
+		//loop360 = new DynamicLoop (phrases360_1, text_360, true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer -= Time.deltaTime;
-		if (timer <= 0) {
-			loop360.pushText();
-			timer = pushTime;
-		}
+		text_360.text = phrasesToPush;
 
+
+//		timer -= Time.deltaTime;
+//		if (timer <= 0) {
+//			loop360.pushText();
+//			timer = pushTime;
+//		}
 
 		/* testing for getting camera (orthographic) size, but failed
 		 * the getting value is not large (accurate enough
@@ -83,5 +107,41 @@ public class CylinderTextLoop : MonoBehaviour {
 
 		/* Camera Test End */ 
 
+	}
+
+	public void pushWords(object sender, ElapsedEventArgs e) {
+		if (queue == "") {
+			queue = getPhrases ();
+		 }
+		//get the last char of the queue, push to the UI
+		string lastChar = queue.Substring(queue.Length - 1, 1);
+		//Debug.Log ("queue: " + queue + ", lastChar: " + lastChar);
+		
+		//if the queue is empty(i.e. queue = "")
+		//then get a new phrases and add to the queue
+		if (queue.Length == 1) {
+			phrasesToPush = " " + lastChar + phrasesToPush;
+		} else { 
+			phrasesToPush = lastChar + phrasesToPush;
+		}
+
+		int textChar = phrasesToPush.Length;
+		int limit = 330;
+		if (textChar > limit) {
+			phrasesToPush = phrasesToPush.Remove(limit-1);
+		}
+		
+		//remove it from the queue
+		queue = queue.Remove (queue.Length - 1);
+
+		/* old method */
+		//string phrases_cur = getPhrases();
+		//phrasesToPush = phrases_cur + " " + phrasesBefore;
+
+	}
+
+	public string getPhrases() {
+		int rdn = rdnNo.Next (0, ar_phrases360.Count);
+		return ar_phrases360 [rdn];
 	}
 }
