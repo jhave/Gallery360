@@ -23,6 +23,8 @@ public class CylinderTextLoop : MonoBehaviour {
 	public bool isStr4;
 	public bool isStr5;
 
+	public int textLimit;
+
 	private System.Random rdnNo;
 
 	private string phrases360;
@@ -67,7 +69,7 @@ public class CylinderTextLoop : MonoBehaviour {
 		ar_phrases360 = new List<string>(phrases360.Split (','));
 
 		queue = getPhrases();
-		Debug.Log (queue);
+		//Debug.Log (queue);
 
 		text_360.text = phrasesToPush;
 		
@@ -126,9 +128,8 @@ public class CylinderTextLoop : MonoBehaviour {
 		}
 
 		int textChar = phrasesToPush.Length;
-		int limit = 330;
-		if (textChar > limit) {
-			phrasesToPush = phrasesToPush.Remove(limit-1);
+		if (textChar > textLimit) {
+			phrasesToPush = phrasesToPush.Remove(textLimit-1);
 		}
 		
 		//remove it from the queue
