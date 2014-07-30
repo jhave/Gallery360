@@ -90,7 +90,7 @@ public class RandomText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rdnNo = new System.Random (2);
+		rdnNo = new System.Random (265);
 
 //		timer = new Timer (randomTime * 1000);
 //		timer.Elapsed += new ElapsedEventHandler (timer_randomize);
