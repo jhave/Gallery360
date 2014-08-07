@@ -81,11 +81,13 @@
      <Compile Include="Assets\Scripts\Disclaimer\RandomText.cs" />
      <Compile Include="Assets\Scripts\DynamicText360\CylinderTextLoop.cs" />
      <Compile Include="Assets\Scripts\DynamicText360\DynamicLoop.cs" />
+     <Compile Include="Assets\Scripts\LightController.cs" />
      <Compile Include="Assets\Scripts\Movement\FreeMovementMotor.cs" />
      <Compile Include="Assets\Scripts\Movement\MovementMotor.cs" />
      <Compile Include="Assets\Scripts\Movement\PlayerCollider.cs" />
      <Compile Include="Assets\Scripts\Movement\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Movement\PlayerMoveController.cs" />
+     <Compile Include="Assets\Scripts\Movement\PlayerRotation.cs" />
      <Compile Include="Assets\Scripts\Movement\RotateWithWand.cs" />
      <Compile Include="Assets\Scripts\Scene\AngryWordsMain.cs" />
      <Compile Include="Assets\Scripts\UI_GamePadMapping.cs" />

@@ -8,6 +8,7 @@ public class PlayerCollider : MonoBehaviour {
 	
 	public Light point02;
 
+	public LevelControl levelControl;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class PlayerCollider : MonoBehaviour {
 			if (point02.intensity < 4) {
 				point02.intensity += 0.05f;
 			} else {
+				levelControl.setLevel(3);
 				isLightOn_AngryWords = false;
 			}
 		}

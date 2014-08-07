@@ -90,8 +90,8 @@ public class LevelControl : MonoBehaviour {
 		case 4:
 			if (Input.GetMouseButtonDown (2) || joystick.ButtonA_Pressed) {
 				//Debug.Log ("Pressed right click.");
-				cPlane3.SetActive(false);
-				cPlane4.SetActive(false);
+				//cPlane3.SetActive(false);
+				//cPlane4.SetActive(false);
 
 				setLevel(5);
 			}
@@ -106,18 +106,18 @@ public class LevelControl : MonoBehaviour {
 		switch (lv) {
 		case 1: //Disclaimer
 			playerMoveController.enabled = false;
-			cylinder01.audio.Play ();
+			//cylinder01.audio.Play ();
 			point00.fade ("in", 4.0f);
 			point01.fade ("in", 4.0f);
 			break;
 		case 2: //Cone
-			player_view.isLookDown = true;
+			//player_view.isLookDown = true;
 			randomText.isRandom = false;
 			//point00.fade ("out", 0.0f);
 			//point01.fade ("out", 0.0f);
 			break;
 		case 3: //Angry Words
-			player_view.isLookUp = true;
+			//player_view.isLookUp = true;
 			playerMoveController.enabled = true;
 			break;
 		case 4: //Dynamic Cylinder 360

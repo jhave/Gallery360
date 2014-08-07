@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DynamicText360\CylinderTextLoop.cs">
     <Files>
-      <File FileName="Assets\Scripts\Disclaimer\RandomText.cs" Line="182" Column="40" />
-      <File FileName="Assets\Scripts\Disclaimer\LevelControl.cs" Line="82" Column="28" />
-      <File FileName="Assets\Scripts\Movement\PlayerCollider.cs" Line="26" Column="5" />
-      <File FileName="Assets\Scripts\DynamicText360\DynamicLoop.cs" Line="32" Column="46" />
-      <File FileName="Assets\Scripts\DynamicText360\CylinderTextLoop.cs" Line="34" Column="20" />
+      <File FileName="Assets\Scripts\Disclaimer\RandomText.cs" Line="272" Column="33" />
+      <File FileName="Assets\Scripts\Disclaimer\LevelControl.cs" Line="114" Column="34" />
+      <File FileName="Assets\Scripts\Movement\PlayerRotation.cs" Line="60" Column="6" />
+      <File FileName="Assets\Scripts\DynamicText360\CylinderTextLoop.cs" Line="130" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
