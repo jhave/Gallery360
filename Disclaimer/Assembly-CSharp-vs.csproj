@@ -91,6 +91,8 @@
      <Compile Include="Assets\Scripts\Movement\RotateWithWand.cs" />
      <Compile Include="Assets\Scripts\Scene\AngryWordsMain.cs" />
      <Compile Include="Assets\Scripts\UI_GamePadMapping.cs" />
+     <Compile Include="Assets\SelfRotation.cs" />
+     <Compile Include="Assets\SinglePopUpRow.cs" />
      <None Include="Assets\MiddleVR\Assets\Materials\OVRLensCorrection.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>C:/Users/Public/Documents/Unity Projects/github/Gallery360/Disclaimer/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
