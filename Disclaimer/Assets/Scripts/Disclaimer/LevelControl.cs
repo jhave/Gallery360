@@ -3,12 +3,11 @@ using System.Collections;
 
 public class LevelControl : MonoBehaviour {
 	
-	public RandomText randomText;
 	private int level;
 
 	//public float timer = 5.0f;
 
-	public GameObject cPlane;
+	public GameObject cPlane1;
 	public GameObject cPlane2;
 	public GameObject cPlane3;
 	public GameObject cPlane4;
@@ -29,11 +28,11 @@ public class LevelControl : MonoBehaviour {
 	public GameObject cylinder01;
 	public GameObject cylinder02;
 
+	public RandomText level1Controller;
 	public SelfRotation level4Controller;
 	public SelfRotation level4Controller_cn;
 	public SinglePopUpRow level5Controller;
 
-	public bool level5Enabled;
 
 	/* Level:
 	 * 1 = Disclaimer
@@ -41,6 +40,8 @@ public class LevelControl : MonoBehaviour {
 	 * 3 = AngryWords
 	 * 4 = Dynamic Cylinder 360 (Rotation from one row to seven row)
 	 * 5 = Dynamic Cylinder 360 (Pop from one row to 20 row, then fill up the colomn)
+	 * 6 = Red two way tunnel
+	 * 7 = Two Irrgular Blue Corridor
 	 */
 	
 	// Use this for initialization
@@ -61,7 +62,7 @@ public class LevelControl : MonoBehaviour {
 		case 1:
 			if (Input.GetMouseButtonDown (0) || joystick.ButtonX_ToggleRelease || joystick.ButtonY_Pressed) {
 				//Debug.Log ("Pressed left click.");
-				randomText.random();
+				level1Controller.random();
 			}
 			
 			if (Input.GetMouseButtonDown (1) || joystick.ButtonB_ToggleRelease) {
@@ -73,7 +74,7 @@ public class LevelControl : MonoBehaviour {
 			//remove plane (remove platform)
 			if (Input.GetMouseButtonDown (2) || joystick.ButtonA_ToggleRelease) {
 				//Debug.Log ("Pressed right click.");
-				cPlane.SetActive(false);
+				cPlane1.SetActive(false);
 				setLevel(2);
 				//vrmgrscript.RootNode = player_root;
 				//vrmgrscript.TemplateCamera = player_view;
@@ -112,7 +113,7 @@ public class LevelControl : MonoBehaviour {
 				cPlane6.collider.enabled = false;
 				//cPlane6.SetActive(false);
 				
-				//setLevel(6);
+				setLevel(6);
 			}
 			break;
 		}
@@ -129,35 +130,49 @@ public class LevelControl : MonoBehaviour {
 			point01.fade ("in", 4.0f);
 			break;
 		case 2: //Cone
+			playerMoveController.enabled = false;
 			//player_view.isLookDown = true;
-			randomText.isRandom = false;
+			level1Controller.isRandom = false;
 			//point00.fade ("out", 0.0f);
 			//point01.fade ("out", 0.0f);
 			break;
 		case 3: //Angry Words
-		/* Player Hit the ground of AngryWords will set to level 3
-		 * The script is in PlayerCollider.cs
-		 */
+			/* Player Hit the ground of AngryWords will set to level 3
+			 * The script is in PlayerCollider.cs
+			 */
+			playerMoveController.enabled = true;
 			/*********** Add statement to clear text in Level 1 **************/
+			level1Controller.clearTextField();
 
 			//player_view.isLookUp = true;
-			playerMoveController.enabled = true;
 			break;
-		case 4: //Dynamic Cylinder 360
+		case 4: //Dynamic Cylinder 360 (one to seven)
+			/* Player Hit the ground will set to level 4
+			 * The script is in PlayerCollider.cs
+			 */
+			playerMoveController.enabled = true;
+
+			level4Controller.addTextField();
+			level4Controller_cn.addTextField();
 			level4Controller.isActive = true;
 			level4Controller_cn.isActive = true;
 			break;
-		case 5: //Dynamic Cylinder 360
+		case 5: //Dynamic Cylinder 360 (fill up 20 row)
+			/* Player Hit the ground will set to level 5
+			 * The script is in PlayerCollider.cs
+			 */
+			playerMoveController.enabled = true;
+
 			level4Controller.isActive = false;
 			level4Controller_cn.isActive = false;
-			/*********** Add statement to clear text in Level 4 **************/
 
-			if (!level5Enabled) {
-				level5Enabled = true;
-				level5Controller.isInLevel = true;
-			}
+			/*********** Add statement to clear text in Level 4 **************/
+			level4Controller.clearTextField();
+
+			level5Controller.isInLevel = true;
 			break;
 		case 6: //Red Two Way Tunnel
+			playerMoveController.enabled = true;
 			break;
 		}
 	}
